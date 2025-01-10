@@ -27,7 +27,7 @@ function ArtisanCard({
     const paymentId = payment.identifier;
     const transactionId = payment.transaction.txid;
     const response = await fetch(
-      "http://localhost:3000/api/v1/payments/complete-payment",
+      "https://artisan-hire-backend.onrender.com/api/v1/payments/complete-payment",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -59,7 +59,7 @@ function ArtisanCard({
       onReadyForServerApproval: async (paymentId) => {
         console.log("ready for server approval");
         const response = await fetch(
-          "http://localhost:3000/api/v1/payments/approve-payment",
+          "https://artisan-hire-backend.onrender.com/api/v1/payments/approve-payment",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -73,7 +73,7 @@ function ArtisanCard({
       onReadyForServerCompletion: async (paymentId, transactionId) => {
         //.. we need to complete the payment
         const response = await fetch(
-          "http://localhost:3000/api/v1/payments/complete-payment",
+          "https://artisan-hire-backend.onrender.com/api/v1/payments/complete-payment",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -98,11 +98,14 @@ function ArtisanCard({
     //check if authenticated
 
     const createUser = async (username) => {
-      const response = await fetch("http://localhost:3000/api/v1/users", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username }),
-      });
+      const response = await fetch(
+        "https://artisan-hire-backend.onrender.com/api/v1/users",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username }),
+        }
+      );
 
       console.log(await response.json());
       if (response.ok) {
