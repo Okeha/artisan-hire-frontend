@@ -54,6 +54,7 @@ function ArtisanCard({
       memo: `Paid for service: ${category} from ${firstname} ${lastname}`,
       metadata: { kittenId: 1234 },
     };
+
     //the SDK activates these functions itself
     const paymentCallbacks = {
       onReadyForServerApproval: async (paymentId) => {
